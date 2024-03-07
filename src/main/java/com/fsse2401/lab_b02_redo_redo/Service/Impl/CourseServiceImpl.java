@@ -4,6 +4,8 @@ import com.fsse2401.lab_b02_redo_redo.Data.Domain.Course.CourseResponseData;
 import com.fsse2401.lab_b02_redo_redo.Data.Domain.Course.CreateCourseRequestData;
 import com.fsse2401.lab_b02_redo_redo.Data.Domain.Course.GetCourseResponseData;
 import com.fsse2401.lab_b02_redo_redo.Data.Domain.Course.UpdateCourseRequestData;
+import com.fsse2401.lab_b02_redo_redo.Data.Dto.Course.CourseResponseDto;
+import com.fsse2401.lab_b02_redo_redo.Data.Dto.Person.Response.PersonResponseDto;
 import com.fsse2401.lab_b02_redo_redo.Data.Entity.CourseEntity;
 import com.fsse2401.lab_b02_redo_redo.Data.Entity.PersonEntity;
 import com.fsse2401.lab_b02_redo_redo.Exception.CourseNotFoundException;
@@ -29,19 +31,24 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public CourseResponseData createCourse(CreateCourseRequestData createCourseRequestData) {
-        PersonEntity teacher = personService.checkHKID(createCourseRequestData.getTeacherHkid());
-        CourseEntity courseEntity = new CourseEntity(createCourseRequestData, teacher);
-        courseEntityList.add(courseEntity);
-        CourseResponseData courseResponseData = new CourseResponseData(courseEntity);
-        return courseResponseData;
+//        PersonEntity teacher = personService.checkHKID(createCourseRequestData.getTeacherHkid());
+//        CourseEntity courseEntity = new CourseEntity(createCourseRequestData, teacher);
+//        courseEntityList.add(courseEntity);
+//        CourseResponseData courseResponseData = new CourseResponseData(courseEntity);
+//        return courseResponseData;
+
+        courseEntityList.add(new CourseEntity(createCourseRequestData, personService.checkHKID(createCourseRequestData.getTeacherHkid())));
+        return new CourseResponseData(new CourseEntity(createCourseRequestData, personService.checkHKID(createCourseRequestData.getTeacherHkid())));
+
     }
 
     @Override
     public List<GetCourseResponseData> getCourse() {
         List<GetCourseResponseData> getAllCourseResponseDataList = new ArrayList<>();
         for (CourseEntity entity : courseEntityList) {
-            GetCourseResponseData data = new GetCourseResponseData(entity);
-            getAllCourseResponseDataList.add(data );
+//            GetCourseResponseData data = new GetCourseResponseData(entity);
+//            getAllCourseResponseDataList.add(data );
+            getAllCourseResponseDataList.add(new GetCourseResponseData(entity));
         }
         return getAllCourseResponseDataList;
     }
@@ -63,13 +70,20 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public CourseResponseData deletecourse (String courseidnumber){
+    public CourseResponseData deletecourse(String courseidnumber){
         CourseEntity courseEntity = courseid (courseidnumber);
         courseEntityList.remove(courseEntity);
-        CourseResponseData result = new CourseResponseData(courseEntity);
-        return result;
+        return new CourseResponseData(courseEntity);
+//        CourseResponseData result = new CourseResponseData(courseEntity);
+//        courseEntityList.remove(courseid (courseidnumber));
+
     }
 
+    @Override
+    public CourseResponseData addstudent (String courseId,String hkid){
+
+
+    }
 
 
     public CourseEntity courseid (String courseID){
@@ -79,6 +93,15 @@ public class CourseServiceImpl implements CourseService {
             }
         }
         throw new CourseNotFoundException();
+    }
+
+    public List<PersonResponseDto> studentDto (){
+        List<PersonResponseDto> dto = new ArrayList<>();
+        for (CourseEntity entity: courseEntityList){
+            CourseResponseDto courseResponseDto = new CourseResponseDto(entity);
+            dto.add(courseResponseDto);
+        }
+        return dto;
     }
 
 

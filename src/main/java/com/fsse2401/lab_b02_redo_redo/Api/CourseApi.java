@@ -51,24 +51,33 @@ public class CourseApi {
 
         for(GetCourseResponseData dto:getCourseResponseDatalist){
 
-            GetCourseResponseDto responseDto = new GetCourseResponseDto(dto);
-
-            dtoList.add(responseDto);
+             dtoList.add(new GetCourseResponseDto(dto));
+//            GetCourseResponseDto responseDto = new GetCourseResponseDto(dto);
+//            dtoList.add(responseDto);
         }
         return dtoList;
     }
 
     @PutMapping("/course")
     public CourseResponseDto updateCourse (@RequestBody UpdateCourseRequestDto requestDto){
-        UpdateCourseRequestData updateCourseRequestData = new UpdateCourseRequestData(requestDto);
-        CourseResponseData courseResponseData = courseService.updatedata(updateCourseRequestData);
-        return new CourseResponseDto(courseResponseData);
+//        UpdateCourseRequestData updateCourseRequestData = new UpdateCourseRequestData(requestDto);
+//        CourseResponseData courseResponseData = courseService.updatedata(updateCourseRequestData);
+//        return new CourseResponseDto(courseResponseData);
+        return new CourseResponseDto(courseService.updatedata(new UpdateCourseRequestData(requestDto)));
     }
 
     @DeleteMapping("/course/{courseid}")
     public CourseResponseDto deleteCourse (@PathVariable String courseid){
-        CourseResponseData data = courseService.deletecourse(courseid);
-        CourseResponseDto dto = new CourseResponseDto(data);
-        return dto;
+//        CourseResponseData data = courseService.deletecourse(courseid);
+//        CourseResponseDto dto = new CourseResponseDto(data);
+//        return dto;
+        return new CourseResponseDto(
+                courseService.deletecourse(courseid));
+    }
+
+    @PatchMapping("/course/{course_id}/remove-student/{person_hkid}")
+    public CourseResponseDto addstudent (@PathVariable String course_id, @PathVariable String hkid){
+        return new CourseResponseDto(
+            courseService.addstudent(course_id,hkid));
     }
 }

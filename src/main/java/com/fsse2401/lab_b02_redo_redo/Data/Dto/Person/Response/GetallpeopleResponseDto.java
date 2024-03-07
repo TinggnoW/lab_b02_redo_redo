@@ -1,8 +1,9 @@
-package com.fsse2401.lab_b02_redo_redo.Data.Dto.Request;
+package com.fsse2401.lab_b02_redo_redo.Data.Dto.Person.Response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fsse2401.lab_b02_redo_redo.Data.Domain.Person.Response.GetallpeopleResponseData;
 
-public class UpdatePersonRequestDto {
+public class GetallpeopleResponseDto {
     @JsonProperty("last_name")
     private String lastName;
     @JsonProperty("first_name")
@@ -10,10 +11,11 @@ public class UpdatePersonRequestDto {
     @JsonProperty("hkid_number")
     private String hkid;
 
-    public UpdatePersonRequestDto(String lastName, String firstName, String hkid) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.hkid = hkid;
+
+    public GetallpeopleResponseDto(GetallpeopleResponseData data) {
+        this.lastName = data.getLastName();
+        this.firstName = data.getFirstName();
+        this.hkid = data.getHkid();
     }
 
     public String getLastName() {
@@ -40,4 +42,3 @@ public class UpdatePersonRequestDto {
         this.hkid = hkid;
     }
 }
-

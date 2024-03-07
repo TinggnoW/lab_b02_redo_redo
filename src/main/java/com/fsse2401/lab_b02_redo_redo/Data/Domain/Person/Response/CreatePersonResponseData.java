@@ -1,16 +1,16 @@
-package com.fsse2401.lab_b02_redo_redo.Data.Domain.Request;
+package com.fsse2401.lab_b02_redo_redo.Data.Domain.Person.Response;
 
-import com.fsse2401.lab_b02_redo_redo.Data.Dto.Request.UpdatePersonRequestDto;
+import com.fsse2401.lab_b02_redo_redo.Data.Entity.PersonEntity;
 
-public class UpdatePersonRequestData {
+public class CreatePersonResponseData {
     private String lastName;
     private String firstName;
     private String hkid;
 
-    public UpdatePersonRequestData(UpdatePersonRequestDto dto) {
-        this.lastName = dto.getLastName();
-        this.firstName = dto.getFirstName();
-        this.hkid = dto.getHkid();
+    public CreatePersonResponseData(PersonEntity entity) {
+        this.lastName = entity.getLastName();
+        this.firstName = entity.getFirstName();
+        this.hkid = entity.getHkid();
     }
 
     public String getLastName() {

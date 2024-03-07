@@ -1,20 +1,20 @@
-package com.fsse2401.lab_b02_redo_redo.Data.Dto.Response;
+package com.fsse2401.lab_b02_redo_redo.Data.Dto.Person.Request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fsse2401.lab_b02_redo_redo.Data.Domain.Response.CreatePersonResponseData;
 
-public class CreatePersonResponseDto {
-    @JsonProperty("last_name")
+public class CreatePersonRequestDto {
+
+    @JsonProperty ("last_name")
     private String lastName;
     @JsonProperty("first_name")
     private String firstName;
     @JsonProperty("hkid_number")
     private String hkid;
 
-    public CreatePersonResponseDto(CreatePersonResponseData responseData) {
-        this.lastName = responseData.getLastName();
-        this.firstName = responseData.getLastName();
-        this.hkid = responseData.getHkid();
+    public CreatePersonRequestDto(String lastName, String firstName, String hkid) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.hkid = hkid;
     }
 
     public String getLastName() {

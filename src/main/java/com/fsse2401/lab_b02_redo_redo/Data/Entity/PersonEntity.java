@@ -1,6 +1,6 @@
 package com.fsse2401.lab_b02_redo_redo.Data.Entity;
 
-import com.fsse2401.lab_b02_redo_redo.Data.Domain.Request.CreatePersonRequestData;
+import com.fsse2401.lab_b02_redo_redo.Data.Domain.Person.Request.CreatePersonRequestData;
 
 public class PersonEntity {
     private String lastName;

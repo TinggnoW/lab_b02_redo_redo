@@ -1,16 +1,15 @@
 package com.fsse2401.lab_b02_redo_redo.Api;
 
-import com.fsse2401.lab_b02_redo_redo.Data.Domain.Request.CreatePersonRequestData;
-import com.fsse2401.lab_b02_redo_redo.Data.Domain.Request.UpdatePersonRequestData;
-import com.fsse2401.lab_b02_redo_redo.Data.Domain.Response.CreatePersonResponseData;
-import com.fsse2401.lab_b02_redo_redo.Data.Domain.Response.GetallpeopleResponseData;
-import com.fsse2401.lab_b02_redo_redo.Data.Domain.Response.PersonResponseData;
-import com.fsse2401.lab_b02_redo_redo.Data.Dto.Request.CreatePersonRequestDto;
-import com.fsse2401.lab_b02_redo_redo.Data.Dto.Request.UpdatePersonRequestDto;
-import com.fsse2401.lab_b02_redo_redo.Data.Dto.Response.CreatePersonResponseDto;
-import com.fsse2401.lab_b02_redo_redo.Data.Dto.Response.GetallpeopleResponseDto;
-import com.fsse2401.lab_b02_redo_redo.Data.Dto.Response.PersonResponseDto;
-import com.fsse2401.lab_b02_redo_redo.Data.Entity.PersonEntity;
+import com.fsse2401.lab_b02_redo_redo.Data.Domain.Person.Request.CreatePersonRequestData;
+import com.fsse2401.lab_b02_redo_redo.Data.Domain.Person.Request.UpdatePersonRequestData;
+import com.fsse2401.lab_b02_redo_redo.Data.Domain.Person.Response.CreatePersonResponseData;
+import com.fsse2401.lab_b02_redo_redo.Data.Domain.Person.Response.GetallpeopleResponseData;
+import com.fsse2401.lab_b02_redo_redo.Data.Domain.Person.Response.PersonResponseData;
+import com.fsse2401.lab_b02_redo_redo.Data.Dto.Person.Request.CreatePersonRequestDto;
+import com.fsse2401.lab_b02_redo_redo.Data.Dto.Person.Request.UpdatePersonRequestDto;
+import com.fsse2401.lab_b02_redo_redo.Data.Dto.Person.Response.CreatePersonResponseDto;
+import com.fsse2401.lab_b02_redo_redo.Data.Dto.Person.Response.GetallpeopleResponseDto;
+import com.fsse2401.lab_b02_redo_redo.Data.Dto.Person.Response.PersonResponseDto;
 import com.fsse2401.lab_b02_redo_redo.Service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

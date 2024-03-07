@@ -1,14 +1,13 @@
-package com.fsse2401.lab_b02_redo_redo.Data.Domain.Response;
+package com.fsse2401.lab_b02_redo_redo.Data.Domain.Person.Response;
 
-import com.fsse2401.lab_b02_redo_redo.Data.Domain.Request.UpdatePersonRequestData;
 import com.fsse2401.lab_b02_redo_redo.Data.Entity.PersonEntity;
 
-public class PersonResponseData {
+public class GetallpeopleResponseData {
     private String lastName;
     private String firstName;
     private String hkid;
 
-    public PersonResponseData(PersonEntity entity) {
+    public GetallpeopleResponseData(PersonEntity entity) {
         this.lastName = entity.getLastName();
         this.firstName = entity.getFirstName();
         this.hkid = entity.getHkid();

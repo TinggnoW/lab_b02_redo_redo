@@ -1,10 +1,10 @@
 package com.fsse2401.lab_b02_redo_redo.Service.Impl;
 
-import com.fsse2401.lab_b02_redo_redo.Data.Domain.Request.CreatePersonRequestData;
-import com.fsse2401.lab_b02_redo_redo.Data.Domain.Request.UpdatePersonRequestData;
-import com.fsse2401.lab_b02_redo_redo.Data.Domain.Response.CreatePersonResponseData;
-import com.fsse2401.lab_b02_redo_redo.Data.Domain.Response.GetallpeopleResponseData;
-import com.fsse2401.lab_b02_redo_redo.Data.Domain.Response.PersonResponseData;
+import com.fsse2401.lab_b02_redo_redo.Data.Domain.Person.Request.CreatePersonRequestData;
+import com.fsse2401.lab_b02_redo_redo.Data.Domain.Person.Request.UpdatePersonRequestData;
+import com.fsse2401.lab_b02_redo_redo.Data.Domain.Person.Response.CreatePersonResponseData;
+import com.fsse2401.lab_b02_redo_redo.Data.Domain.Person.Response.GetallpeopleResponseData;
+import com.fsse2401.lab_b02_redo_redo.Data.Domain.Person.Response.PersonResponseData;
 import com.fsse2401.lab_b02_redo_redo.Data.Entity.PersonEntity;
 import com.fsse2401.lab_b02_redo_redo.Exception.PersonNotFoundException;
 import com.fsse2401.lab_b02_redo_redo.Service.PersonService;
@@ -50,7 +50,6 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public PersonResponseData updatePerson(UpdatePersonRequestData updatePersonRequestData) {
         PersonEntity personEntity = checkHKID(updatePersonRequestData.getHkid());
-//        no new object?
         personEntity.setLastName(updatePersonRequestData.getLastName());
         personEntity.setFirstName(updatePersonRequestData.getFirstName());
 
@@ -65,8 +64,7 @@ public class PersonServiceImpl implements PersonService {
     public PersonResponseData deletPerson(String hkid) {
         PersonEntity personEntity = checkHKID(hkid);
         personEntityList.remove(personEntity);
-        PersonResponseData personResponseData = new PersonResponseData(personEntity);
-        return personResponseData;
+        return new PersonResponseData(personEntity);
 
     }
 
@@ -82,7 +80,7 @@ public class PersonServiceImpl implements PersonService {
         return personResponseDataList;
     }
 
-
+    @Override
     public PersonEntity checkHKID(String hkid) {
         for (PersonEntity personEntity : personEntityList) {
             if (personEntity.getHkid().equals(hkid))

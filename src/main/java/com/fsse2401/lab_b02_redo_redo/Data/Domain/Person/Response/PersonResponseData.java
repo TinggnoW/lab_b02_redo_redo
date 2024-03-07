@@ -1,21 +1,16 @@
-package com.fsse2401.lab_b02_redo_redo.Data.Dto.Response;
+package com.fsse2401.lab_b02_redo_redo.Data.Domain.Person.Response;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fsse2401.lab_b02_redo_redo.Data.Domain.Response.GetallpeopleResponseData;
+import com.fsse2401.lab_b02_redo_redo.Data.Entity.PersonEntity;
 
-public class GetallpeopleResponseDto {
-    @JsonProperty("last_name")
+public class PersonResponseData {
     private String lastName;
-    @JsonProperty("first_name")
     private String firstName;
-    @JsonProperty("hkid_number")
     private String hkid;
 
-
-    public GetallpeopleResponseDto(GetallpeopleResponseData data) {
-        this.lastName = data.getLastName();
-        this.firstName = data.getFirstName();
-        this.hkid = data.getHkid();
+    public PersonResponseData(PersonEntity entity) {
+        this.lastName = entity.getLastName();
+        this.firstName = entity.getFirstName();
+        this.hkid = entity.getHkid();
     }
 
     public String getLastName() {
